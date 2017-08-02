@@ -1,0 +1,5 @@
+@each $class, $value in $gridi-helpers-flexbox-flex-wrap-classes {
+    .#{$class} {
+        @include flex-wrap($value);
+    }
+}
