@@ -1,5 +1,13 @@
 @each $class, $value in $gridi-helpers-flexbox-flex-wrap-classes {
     .#{$class} {
-        @include flex-wrap($value);
+        @if is-map($value) {
+            $settings: map-get($value, settings);
+            @if not is-map($settings) {
+                $settings: ();
+            }
+            @include flex-wrap(map-get($value, value), $settings);
+        } @else {
+            @include flex-wrap($value);
+        }
     }
 }
